@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archie Salburo - Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0c1f 0%, #1a1a2e 100%);
+      color: #fff;
+      padding: 40px 20px;
+    }
+    
+    .resume-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(100, 108, 255, 0.3);
+    }
+    
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #646cff, #a855f7, #ff6b6b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: #a0a0c0;
+      font-size: 1.2rem;
+      border-bottom: 2px solid rgba(100, 108, 255, 0.3);
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    
+    h2 {
+      color: #646cff;
+      margin: 30px 0 15px 0;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2::before {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background: linear-gradient(90deg, #646cff, #a855f7);
+      border-radius: 3px;
+    }
+    
+    .contact-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin: 25px 0;
+      padding: 20px;
+      background: rgba(100, 108, 255, 0.1);
+      border-radius: 16px;
+      border: 1px solid rgba(100, 108, 255, 0.2);
+    }
+    
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #c0c0e0;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #646cff, #a855f7);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(100, 108, 255, 0.4);
+    }
+    
+    .project-item {
+      margin: 15px 0;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border-left: 3px solid #646cff;
+    }
+    
+    .project-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(5px);
+    }
+    
+    .project-item strong {
+      font-size: 1.1rem;
+      color: #a855f7;
+    }
+    
+    .project-item p {
+      margin-top: 8px;
+      color: #b0b0d0;
+      line-height: 1.5;
+    }
+    
+    /* Special style for certification items */
+    .certification-item {
+      margin: 15px 0;
+      padding: 18px;
+      background: rgba(100, 108, 255, 0.08);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border-left: 3px solid #4ade80;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .certification-item:hover {
+      background: rgba(100, 108, 255, 0.15);
+      transform: translateX(5px);
+    }
+    
+    .cert-badge {
+      background: #4ade80;
+      color: #0f0c1f;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .cert-link {
+      color: #4ade80;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cert-link:hover {
+      color: #22c55e;
+      text-decoration: underline;
+    }
+    
+    .about-text {
+      color: #c0c0e0;
+      line-height: 1.7;
+    }
+    
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #646cff, #a855f7);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(100, 108, 255, 0.5);
+    }
+    
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #646cff, #a855f7, transparent);
+      margin: 20px 0;
+    }
+    
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      .resume-container {
+        background: white;
+        color: black;
+        box-shadow: none;
+        padding: 30px;
+      }
+      .contact-info {
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+      }
+      .skill-tag {
+        background: #e0e0e0;
+        color: black;
+      }
+      .project-item {
+        background: #f9f9f9;
+        border-left-color: #646cff;
+      }
+      .certification-item {
+        background: #f0fdf4;
+        border-left-color: #4ade80;
+      }
+      .download-btn {
+        display: none;
+      }
+      h2::before {
+        background: #646cff;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .resume-container {
+        padding: 25px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <h1>Archie Salburo</h1>
+    <div class="subtitle">Creative Web Developer | IT Student</div>
+    
+    <div class="contact-info">
+      <span>📧 salburoarchie2005@gmail.com</span>
+      <span>📱 +(63)963-171-9447</span>
+      <span>🌍 Philippines</span>
+      <span>💻 Available for hire</span>
+    </div>
+
+    <h2>About Me</h2>
+    <p class="about-text">Diploma in Information Technology student with a strong passion for web development and modern technology. Committed to creating responsive, user-friendly, and efficient digital experiences. Always eager to learn new technologies and take on challenging projects.</p>
+
+    <h2>Technical Skills</h2>
+    <div>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">HTML & CSS</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">Vite</span>
+      <span class="skill-tag">Figma</span>
+      <span class="skill-tag">Supabase</span>
+      <span class="skill-tag">Git & GitHub</span>
+      <span class="skill-tag">JavaScript (ES6+)</span>
+      <span class="skill-tag">Responsive Design</span>
+      <span class="skill-tag">Bootstrap</span>
+      <span class="skill-tag">Flexbox/Grid</span>
+    </div>
+
+    <h2>Featured Projects</h2>
+    <div class="project-item">
+      <strong>🚀 Portfolio Website</strong>
+      <p>Modern portfolio with smooth animations, Supabase integration, and responsive design. Features include dynamic project loading, contact form with database storage, and interactive UI elements.</p>
+    </div>
+    <div class="project-item">
+      <strong>📚 Asian Library</strong>
+      <p>An online book platform that allows users to purchase and read books digitally through a convenient, user-friendly, and easy-to-navigate interface.</p>
+    </div>
+    <div class="project-item">
+       <strong>🛠️ Motorcycle Repair Reservation System</strong>
+      <p>Developed an Online Motorcycle Diagnostic and Repair Reservation System for DC MotoGears x Pitstop, designed to streamline service bookings, diagnostics, and customer management through a modern web-based platform.</p>
+    </div>
+
+    <h2>Education</h2>
+    <div class="project-item">
+      <strong>📚 Diploma in Information Technology</strong>
+      <p>Currently Enrolled | Focus on Web Development and Modern Technologies</p>
+    </div>
+
+    <h2>Certifications & Achievements</h2>
+    
+    <!-- NEW: freeCodeCamp Certification -->
+    <div class="project-item">
+      <span class="cert-badge">✓ VERIFIED</span>
+      <div style="flex: 1;">
+        <strong>🎓 Responsive Web Design Certification</strong>
+        <p>freeCodeCamp - Completed comprehensive curriculum covering HTML5, CSS3, Flexbox, CSS Grid, and responsive design principles. Built 5+ responsive projects to earn certification.</p>
+      </div>
+      <a href="https://www.freecodecamp.org/certification/archiesalburo/responsive-web-design" target="_blank" class="cert-link">🔗 Verify →</a>
+    </div>
+    
+    <div class="project-item">6+-
+      <strong>🏆 Web Development Fundamentals</strong>
+      <p>Completed comprehensive training in modern web technologies</p>
+    </div>
+
+    <h2>Languages</h2>
+    <div>
+      <span class="skill-tag">English (Professional)</span>
+      <span class="skill-tag">Filipino (Native)</span>
+    </div>
+
+    <hr />
+
+    <h2>Contact Me</h2>
+    <p class="about-text">Open to freelance opportunities, collaborations, and full-time positions. Let's create something amazing together!</p>
+    
+    <a href="#" onclick="window.print(); return false;" class="download-btn">
+      🖨️ Print / Save as PDF
+    </a>
+  </div>
+
+  <script>
+    console.log('Resume loaded successfully!');
+  </script>
+</body>
+</html>
