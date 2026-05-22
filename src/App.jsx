@@ -397,7 +397,7 @@ const App = () => {
               <div className="contact-details">
                 <p>📧 salburoarchie2005@gmail.com</p>
                 <p>📱 +63963-171-9447</p>
-                <p>🌍 Philippines</p>
+                <p>🌍Panubtuban, Dauin, Negros Oriental, Philippines</p>
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
