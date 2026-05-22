@@ -98,7 +98,7 @@
       box-shadow: 0 5px 15px rgba(100, 108, 255, 0.4);
     }
     
-    .project-item {
+    .project-item, .experience-item {
       margin: 15px 0;
       padding: 18px;
       background: rgba(255, 255, 255, 0.05);
@@ -107,23 +107,22 @@
       border-left: 3px solid #646cff;
     }
     
-    .project-item:hover {
+    .project-item:hover, .experience-item:hover {
       background: rgba(255, 255, 255, 0.08);
       transform: translateX(5px);
     }
     
-    .project-item strong {
+    .project-item strong, .experience-item strong {
       font-size: 1.1rem;
       color: #a855f7;
     }
     
-    .project-item p {
+    .project-item p, .experience-item p {
       margin-top: 8px;
       color: #b0b0d0;
       line-height: 1.5;
     }
     
-    /* Special style for certification items */
     .certification-item {
       margin: 15px 0;
       padding: 18px;
@@ -187,6 +186,32 @@
       box-shadow: 0 10px 25px -5px rgba(100, 108, 255, 0.5);
     }
     
+    .inspire-quote {
+      background: linear-gradient(135deg, rgba(100, 108, 255, 0.15), rgba(168, 85, 247, 0.1));
+      padding: 25px;
+      border-radius: 16px;
+      margin: 25px 0;
+      text-align: center;
+      border: 1px solid rgba(100, 108, 255, 0.3);
+    }
+    
+    .inspire-quote p {
+      font-style: italic;
+      color: #c0c0e0;
+      font-size: 1rem;
+    }
+    
+    .company {
+      color: #a855f7;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+    
+    .duration {
+      color: #8888aa;
+      font-size: 0.85rem;
+    }
+    
     hr {
       border: none;
       height: 1px;
@@ -214,7 +239,7 @@
         background: #e0e0e0;
         color: black;
       }
-      .project-item {
+      .project-item, .experience-item {
         background: #f9f9f9;
         border-left-color: #646cff;
       }
@@ -227,6 +252,9 @@
       }
       h2::before {
         background: #646cff;
+      }
+      .inspire-quote {
+        background: #f0f0f0;
       }
     }
     
@@ -247,89 +275,105 @@
 <body>
   <div class="resume-container">
     <h1>Archie Salburo</h1>
-    <div class="subtitle">Creative Web Developer | IT Student</div>
+    <div class="subtitle">🎓 Information Technology Graduate | Web Developer | Dreamer</div>
     
     <div class="contact-info">
       <span>📧 salburoarchie2005@gmail.com</span>
-      <span>📱 +(63)963-171-9447</span>
+      <span>📱 +63963-171-9447</span>
       <span>🌍 Philippines</span>
-      <span>💻 Available for hire</span>
+      <span>💻 Open for opportunities</span>
     </div>
 
-    <h2>About Me</h2>
-    <p class="about-text">Diploma in Information Technology student with a strong passion for web development and modern technology. Committed to creating responsive, user-friendly, and efficient digital experiences. Always eager to learn new technologies and take on challenging projects.</p>
+    <!-- Inspiring Quote Section -->
+    <div class="inspire-quote">
+      <p>"From financial struggles to graduation day — I turned every challenge into fuel for growth. Your circumstances don't define you. Your determination does."</p>
+    </div>
 
-    <h2>Technical Skills</h2>
+    <h2>🎓 About Me</h2>
+    <p class="about-text">I am a proud <strong>Diploma in Information Technology graduate</strong> who overcame financial instability to achieve my dreams. My journey taught me resilience, resourcefulness, and the power of never giving up. I am passionate about web development and using technology to create opportunities for others.</p>
+
+    <h2>💼 Professional Experience</h2>
+    
+    <div class="experience-item">
+      <strong>📞 Customer Service Representative</strong>
+      <div class="company">Qualfon</div>
+      <div class="duration">3 months</div>
+      <p>Developed strong communication and problem-solving skills while handling customer inquiries and resolving complaints. This experience taught me patience, empathy, and how to stay calm under pressure.</p>
+    </div>
+
+    <div class="experience-item">
+      <strong>🖥️ IT Intern</strong>
+      <div class="company">Inspiro</div>
+      <div class="duration">300 hours</div>
+      <p>Assisted in IT infrastructure management, provided technical support, troubleshooting hardware/software issues, and contributed to system maintenance. Gained hands-on experience in real-world IT operations.</p>
+    </div>
+
+    <h2>🛠️ Technical Skills</h2>
     <div>
       <span class="skill-tag">React</span>
       <span class="skill-tag">HTML & CSS</span>
+      <span class="skill-tag">JavaScript</span>
       <span class="skill-tag">Node.js</span>
       <span class="skill-tag">TypeScript</span>
       <span class="skill-tag">Vite</span>
-      <span class="skill-tag">Figma</span>
       <span class="skill-tag">Supabase</span>
       <span class="skill-tag">Git & GitHub</span>
-      <span class="skill-tag">JavaScript (ES6+)</span>
+      <span class="skill-tag">Figma</span>
       <span class="skill-tag">Responsive Design</span>
-      <span class="skill-tag">Bootstrap</span>
-      <span class="skill-tag">Flexbox/Grid</span>
     </div>
 
-    <h2>Featured Projects</h2>
+    <h2>🚀 Featured Projects</h2>
     <div class="project-item">
-      <strong>🚀 Portfolio Website</strong>
-      <p>Modern portfolio with smooth animations, Supabase integration, and responsive design. Features include dynamic project loading, contact form with database storage, and interactive UI elements.</p>
+      <strong>✨ Personal Portfolio Website</strong>
+      <p>A modern, fully responsive portfolio with smooth animations, Supabase integration for dynamic project loading, and a contact form that saves messages to a database. Built with React, Vite, and CSS.</p>
     </div>
     <div class="project-item">
       <strong>📚 Asian Library</strong>
       <p>An online book platform that allows users to purchase and read books digitally through a convenient, user-friendly, and easy-to-navigate interface.</p>
     </div>
     <div class="project-item">
-       <strong>🛠️ Motorcycle Repair Reservation System</strong>
+      <strong>🛠️ Motorcycle Repair Reservation System</strong>
       <p>Developed an Online Motorcycle Diagnostic and Repair Reservation System for DC MotoGears x Pitstop, designed to streamline service bookings, diagnostics, and customer management through a modern web-based platform.</p>
     </div>
 
-    <h2>Education</h2>
+    <h2>🎓 Education</h2>
     <div class="project-item">
-      <strong>📚 Diploma in Information Technology</strong>
-      <p>Currently Enrolled | Focus on Web Development and Modern Technologies</p>
+      <strong>🎉 Diploma in Information Technology</strong>
+      <p>Graduated | Focus on Web Development and Modern Technologies</p>
+      <p class="company">Achieved my degree despite financial challenges — proof that determination beats circumstances.</p>
     </div>
 
-    <h2>Certifications & Achievements</h2>
+    <h2>📜 Certifications & Achievements</h2>
     
-    <!-- NEW: freeCodeCamp Certification -->
-    <div class="project-item">
+    <div class="certification-item">
       <span class="cert-badge">✓ VERIFIED</span>
       <div style="flex: 1;">
         <strong>🎓 Responsive Web Design Certification</strong>
         <p>freeCodeCamp - Completed comprehensive curriculum covering HTML5, CSS3, Flexbox, CSS Grid, and responsive design principles. Built 5+ responsive projects to earn certification.</p>
       </div>
-      <a href="https://www.freecodecamp.org/certification/archiesalburo/responsive-web-design" target="_blank" class="cert-link">🔗 Verify →</a>
-    </div>
-    
-    <div class="project-item">6+-
-      <strong>🏆 Web Development Fundamentals</strong>
-      <p>Completed comprehensive training in modern web technologies</p>
+      <a href="https://www.freecodecamp.org/certification/salburo/responsive-web-design" target="_blank" class="cert-link">🔗 Verify →</a>
     </div>
 
-    <h2>Languages</h2>
+    <h2>🌐 Languages</h2>
     <div>
-      <span class="skill-tag">English (Professional)</span>
+      <span class="skill-tag">English (Professional Working)</span>
       <span class="skill-tag">Filipino (Native)</span>
     </div>
 
     <hr />
 
-    <h2>Contact Me</h2>
-    <p class="about-text">Open to freelance opportunities, collaborations, and full-time positions. Let's create something amazing together!</p>
+    <h2>💬 A Message From Me</h2>
+    <p class="about-text">To anyone reading this who is struggling financially or facing obstacles — keep going. Your breakthrough is closer than you think. I am living proof that where you start doesn't determine where you can go. Let's build something amazing together.</p>
     
-    <a href="#" onclick="window.print(); return false;" class="download-btn">
-      🖨️ Print / Save as PDF
-    </a>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="#" onclick="window.print(); return false;" class="download-btn">
+        🖨️ Print / Save as PDF
+      </a>
+    </div>
   </div>
 
   <script>
-    console.log('Resume loaded successfully!');
+    console.log('Resume loaded successfully - Archie Salburo, IT Graduate!');
   </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient';
 import './App.css';
 
@@ -47,7 +47,6 @@ const App = () => {
       } catch (error) {
         console.error('❌ Error fetching projects:', error);
         setErrorMessage('Failed to load projects. Please check your database connection.');
-        // Fallback to default projects
         setProjects([
           { id: 1, title: 'AI Image Generator', description: 'Generate stunning images using artificial intelligence' },
           { id: 2, title: 'E-Commerce Platform', description: 'Full-stack shopping experience with real-time updates' },
@@ -80,7 +79,7 @@ const App = () => {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.reveal-on-scroll, .project-card, .stagger-children, .skills-section').forEach((el) => {
+    document.querySelectorAll('.reveal-on-scroll, .project-card, .stagger-children, .skills-section, .experience-card').forEach((el) => {
       observer.observe(el);
     });
 
@@ -158,6 +157,7 @@ const App = () => {
           <div className="nav-links">
             <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>Home</a>
             <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
+            <a href="#experiences" className={activeSection === 'experiences' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('experiences'); }}>Experience</a>
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('projects'); }}>Projects</a>
             <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>Contact</a>
           </div>
@@ -167,10 +167,10 @@ const App = () => {
       <section id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
-            <div className="hero-badge">✨ Welcome to my digital space</div>
+            <div className="hero-badge">✨ Graduate | Developer | Dreamer</div>
             <h1>Hi, I'm <span className="gradient-text">Archie Salburo</span></h1>
-            <h2>Creative Web Developer</h2>
-            <p>I craft beautiful, performant web experiences with modern technologies. Let's build something amazing together.</p>
+            <h2>Diploma in Information Technology Graduate</h2>
+            <p>From financial struggles to graduation day — I turned every challenge into fuel for growth. Now I build web experiences that inspire and solve real problems.</p>
             <div className="hero-buttons">
               <button className="btn-primary" onClick={() => scrollTo('projects')}>View My Work</button>
               <button className="btn-secondary" onClick={() => scrollTo('contact')}>Let's Talk</button>
@@ -195,20 +195,26 @@ const App = () => {
         </div>
       </section>
 
-      {/* ========== ABOUT SECTION WITH SKILL PROGRESS BARS ========== */}
+      {/* ========== ABOUT SECTION WITH INSPIRING STORY ========== */}
       <section id="about" className="reveal-on-scroll">
         <div className="container">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">My Journey</h2>
           <div className="about-content">
             <div className="about-text stagger-children">
-              <p>I am a Diploma in Information Technology student with a strong passion for web development and modern technology.</p>
-              <p>My interest in technology began with a curiosity about how websites and online systems work, which gradually developed into a commitment to creating responsive, user-friendly, and efficient digital experiences.</p>
-              <p>Outside of coding, I enjoy exploring emerging technologies, improving my development skills, and working on creative web projects that expand my knowledge and experience.</p>
+              <p>🎓 <strong>I am a proud graduate of Diploma in Information Technology</strong> — a milestone that means more to me than just a piece of paper. It represents countless sleepless nights, unwavering determination, and the courage to keep going when the odds were stacked against me.</p>
+              
+              <p>💰 <strong>Financially unstable but never broke in spirit.</strong> There were times when I wasn't sure if I could afford the next semester. I worked, saved, sacrificed, and sometimes went without just to stay in school. But every challenge taught me resilience, resourcefulness, and the value of hard work. I learned that your circumstances don't define you — your determination does.</p>
+              
+              <p>💡 <strong>Why IT?</strong> I fell in love with technology because it offered something my situation couldn't — opportunity. Coding became my escape and my weapon. Every line of code I wrote was a step toward a better future. I discovered that with a laptop and an internet connection, I could build anything, learn anything, and become anything I wanted to be.</p>
+              
+              <p>🚀 <strong>Today, I stand here not despite my struggles, but because of them.</strong> My journey taught me empathy, grit, and the importance of never giving up. I want to use my skills to build tools that help others, create opportunities for those who feel stuck, and prove that where you start doesn't determine where you can go.</p>
+              
+              <p>🌟 <strong>To anyone reading this who is struggling:</strong> Keep going. Your breakthrough is closer than you think. Let your hunger for success be louder than your fear of failure.</p>
             </div>
             
             {/* ========== SKILL PROGRESS BARS ========== */}
             <div className="skills-section stagger-children">
-              <h3 className="skills-title">My Skills Proficiency</h3>
+              <h3 className="skills-title">💪 Skills I Built Along The Way</h3>
               
               <div className="skill-item">
                 <div className="skill-info">
@@ -300,26 +306,22 @@ const App = () => {
                 </div>
               </div>
             </div>
-
-            
           </div>
         </div>
       </section>
-      
 
-        {/* ========== OTHER EXPERIENCES SECTION ========== */}
+      {/* ========== OTHER EXPERIENCES SECTION ========== */}
       <section id="experiences" className="reveal-on-scroll">
         <div className="container">
-          <h2 className="section-title">Other Experiences</h2>
+          <h2 className="section-title">Professional Experience</h2>
           <div className="experiences-grid">
             
-            {/* Experience 1: Qualfon */}
             <div className="experience-card">
               <div className="experience-icon">💼</div>
               <h3>Customer Service Representative</h3>
               <div className="experience-company">Qualfon</div>
               <div className="experience-duration">📅 3 months</div>
-              <p>Provided exceptional customer support, handled inquiries, resolved complaints, and maintained high customer satisfaction ratings. Developed strong communication and problem-solving skills in a fast-paced environment.</p>
+              <p>Developed strong communication and problem-solving skills while handling customer inquiries and resolving complaints. This experience taught me patience, empathy, and how to stay calm under pressure.</p>
               <div className="experience-tags">
                 <span>Customer Support</span>
                 <span>Communication</span>
@@ -327,13 +329,12 @@ const App = () => {
               </div>
             </div>
 
-            {/* Experience 2: Inspiro */}
             <div className="experience-card">
               <div className="experience-icon">🖥️</div>
               <h3>IT Intern</h3>
               <div className="experience-company">Inspiro</div>
               <div className="experience-duration">📅 300 hours</div>
-              <p>Assisted in IT infrastructure management, provided technical support, troubleshooting hardware/software issues, and contributed to system maintenance. Gained hands-on experience in real-world IT operations.</p>
+              <p>Gained hands-on experience in IT infrastructure, technical support, and system maintenance. This internship bridged the gap between academic learning and real-world application.</p>
               <div className="experience-tags">
                 <span>Technical Support</span>
                 <span>Troubleshooting</span>
@@ -345,12 +346,11 @@ const App = () => {
         </div>
       </section>
 
-      {/* ========== PROJECTS SECTION (Dynamic from Supabase) ========== */}
+      {/* ========== PROJECTS SECTION ========== */}
       <section id="projects">
         <div className="container">
           <h2 className="section-title reveal-on-scroll">Featured Projects</h2>
           
-          {/* Show error message if any */}
           {errorMessage && (
             <div style={{ background: 'rgba(239, 68, 68, 0.2)', border: '1px solid #f87171', borderRadius: '12px', padding: '16px', marginBottom: '24px', textAlign: 'center' }}>
               <p style={{ color: '#f87171', margin: 0 }}>⚠️ {errorMessage}</p>
