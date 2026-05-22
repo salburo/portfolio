@@ -305,6 +305,45 @@ const App = () => {
           </div>
         </div>
       </section>
+      
+
+        {/* ========== OTHER EXPERIENCES SECTION ========== */}
+      <section id="experiences" className="reveal-on-scroll">
+        <div className="container">
+          <h2 className="section-title">Other Experiences</h2>
+          <div className="experiences-grid">
+            
+            {/* Experience 1: Qualfon */}
+            <div className="experience-card">
+              <div className="experience-icon">💼</div>
+              <h3>Customer Service Representative</h3>
+              <div className="experience-company">Qualfon</div>
+              <div className="experience-duration">📅 3 months</div>
+              <p>Provided exceptional customer support, handled inquiries, resolved complaints, and maintained high customer satisfaction ratings. Developed strong communication and problem-solving skills in a fast-paced environment.</p>
+              <div className="experience-tags">
+                <span>Customer Support</span>
+                <span>Communication</span>
+                <span>Problem Solving</span>
+              </div>
+            </div>
+
+            {/* Experience 2: Inspiro */}
+            <div className="experience-card">
+              <div className="experience-icon">🖥️</div>
+              <h3>IT Intern</h3>
+              <div className="experience-company">Inspiro</div>
+              <div className="experience-duration">📅 300 hours</div>
+              <p>Assisted in IT infrastructure management, provided technical support, troubleshooting hardware/software issues, and contributed to system maintenance. Gained hands-on experience in real-world IT operations.</p>
+              <div className="experience-tags">
+                <span>Technical Support</span>
+                <span>Troubleshooting</span>
+                <span>IT Operations</span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
 
       {/* ========== PROJECTS SECTION (Dynamic from Supabase) ========== */}
       <section id="projects">

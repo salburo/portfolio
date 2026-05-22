@@ -921,3 +921,112 @@ section { padding: 100px 0; }
     margin-bottom: 16px;
   }
 }
+
+
+/* ========== OTHER EXPERIENCES SECTION ========== */
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.experience-card {
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1px solid rgba(100, 108, 255, 0.2);
+  text-align: center;
+}
+
+.experience-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(100, 108, 255, 0.5);
+  box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.4);
+  background: rgba(40, 40, 65, 0.8);
+}
+
+.experience-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #646cff, #a855f7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 32px;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .experience-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.experience-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.experience-company {
+  color: #a855f7;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.experience-duration {
+  color: #8888aa;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(100, 108, 255, 0.15);
+  border-radius: 20px;
+}
+
+.experience-card p {
+  color: #b0b0d0;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.experience-tags span {
+  background: rgba(100, 108, 255, 0.2);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.experience-tags span:hover {
+  background: #646cff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .experiences-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .experience-card {
+    padding: 25px;
+  }
+  
+  .experience-card h3 {
+    font-size: 1.3rem;
+  }
+}
