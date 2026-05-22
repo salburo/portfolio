@@ -1030,3 +1030,105 @@ section { padding: 100px 0; }
     font-size: 1.3rem;
   }
 }
+
+
+
+/* Services Section */
+/* ========== SERVICES SECTION ========== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.service-card {
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 24px;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1px solid rgba(100, 108, 255, 0.2);
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(100, 108, 255, 0.5);
+  box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.4);
+  background: rgba(40, 40, 65, 0.8);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #646cff, #a855f7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 32px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.service-card p {
+  color: #b0b0d0;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* New skill colors */
+.content-fill { background: linear-gradient(90deg, #f24e1e, #f7df1e); }
+.edit-fill { background: linear-gradient(90deg, #a855f7, #646cff); }
+.smm-fill { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+.va-fill { background: linear-gradient(90deg, #10b981, #34d399); }
+.affiliate-fill { background: linear-gradient(90deg, #f59e0b, #f97316); }
+
+/* Hire badge */
+.hire-badge {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f0c1f;
+  text-align: center;
+  display: inline-block;
+  width: auto;
+}
+
+/* ========== SKILLS SUBTITLE ========== */
+.skills-subtitle {
+  font-size: 1.2rem;
+  color: #a855f7;
+  margin: 25px 0 15px 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(100, 108, 255, 0.2);
+}
+
+.skills-subtitle:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* New VA & Digital Creator skill colors */
+.content-fill { background: linear-gradient(90deg, #f24e1e, #f7df1e); }
+.edit-fill { background: linear-gradient(90deg, #a855f7, #646cff); }
+.smm-fill { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+.va-fill { background: linear-gradient(90deg, #10b981, #34d399); }
+.affiliate-fill { background: linear-gradient(90deg, #f59e0b, #f97316); }
+.support-fill { background: linear-gradient(90deg, #ef4444, #f97316); }
+.email-fill { background: linear-gradient(90deg, #8b5cf6, #a855f7); }

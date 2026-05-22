@@ -1,4 +1,4 @@
- import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient';
 import './App.css';
 
@@ -167,10 +167,10 @@ const App = () => {
       <section id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
-            <div className="hero-badge">✨ Graduate | Developer | Dreamer</div>
+            <div className="hero-badge">✨ IT Graduate | Developer | VA | Digital Creator</div>
             <h1>Hi, I'm <span className="gradient-text">Archie Salburo</span></h1>
-            <h2>Diploma in Information Technology Graduate</h2>
-            <p>From financial struggles to graduation day — I turned every challenge into fuel for growth. Now I build web experiences that inspire and solve real problems.</p>
+            <h2>IT Graduate | Web Developer | VA & Digital Creator</h2>
+            <p>From financial struggles to graduation day — I turned every challenge into fuel for growth. Now I build web experiences, create content, and help brands grow online.</p>
             <div className="hero-buttons">
               <button className="btn-primary" onClick={() => scrollTo('projects')}>View My Work</button>
               <button className="btn-secondary" onClick={() => scrollTo('contact')}>Let's Talk</button>
@@ -212,13 +212,16 @@ const App = () => {
               <p>🌟 <strong>To anyone reading this who is struggling:</strong> Keep going. Your breakthrough is closer than you think. Let your hunger for success be louder than your fear of failure.</p>
             </div>
             
-            {/* ========== SKILL PROGRESS BARS ========== */}
+            {/* ========== SKILL PROGRESS BARS (MIXED IT + VA SKILLS) ========== */}
             <div className="skills-section stagger-children">
               <h3 className="skills-title">💪 Skills I Built Along The Way</h3>
               
+              {/* Technical Skills - Left Side */}
+              <div className="skills-subtitle">💻 Technical Development</div>
+              
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">React</span>
+                  <span className="skill-name">⚛️ React</span>
                   <span className="skill-percent">75%</span>
                 </div>
                 <div className="progress-bar">
@@ -228,7 +231,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">HTML & CSS</span>
+                  <span className="skill-name">🌐 HTML & CSS</span>
                   <span className="skill-percent">90%</span>
                 </div>
                 <div className="progress-bar">
@@ -238,7 +241,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">JavaScript</span>
+                  <span className="skill-name">🟢 JavaScript</span>
                   <span className="skill-percent">70%</span>
                 </div>
                 <div className="progress-bar">
@@ -248,7 +251,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">Node.js</span>
+                  <span className="skill-name">📦 Node.js</span>
                   <span className="skill-percent">60%</span>
                 </div>
                 <div className="progress-bar">
@@ -258,7 +261,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">TypeScript</span>
+                  <span className="skill-name">🟦 TypeScript</span>
                   <span className="skill-percent">55%</span>
                 </div>
                 <div className="progress-bar">
@@ -268,7 +271,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">Vite</span>
+                  <span className="skill-name">⚡ Vite</span>
                   <span className="skill-percent">80%</span>
                 </div>
                 <div className="progress-bar">
@@ -278,7 +281,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">Supabase</span>
+                  <span className="skill-name">🗄️ Supabase</span>
                   <span className="skill-percent">65%</span>
                 </div>
                 <div className="progress-bar">
@@ -288,7 +291,7 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">Figma</span>
+                  <span className="skill-name">🎨 Figma</span>
                   <span className="skill-percent">70%</span>
                 </div>
                 <div className="progress-bar">
@@ -298,11 +301,84 @@ const App = () => {
 
               <div className="skill-item">
                 <div className="skill-info">
-                  <span className="skill-name">Git & GitHub</span>
+                  <span className="skill-name">🐙 Git & GitHub</span>
                   <span className="skill-percent">75%</span>
                 </div>
                 <div className="progress-bar">
                   <div className="progress-fill git-fill" style={{ width: '75%' }}></div>
+                </div>
+              </div>
+
+              {/* VA & Digital Creator Skills - Right Side */}
+              <div className="skills-subtitle">📱 Virtual Assistance & Content Creation</div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">📱 Content Creation</span>
+                  <span className="skill-percent">90%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill content-fill" style={{ width: '90%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">✂️ Video Editing</span>
+                  <span className="skill-percent">85%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill edit-fill" style={{ width: '85%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">📊 Social Media Management</span>
+                  <span className="skill-percent">85%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill smm-fill" style={{ width: '85%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">💼 Virtual Assistance</span>
+                  <span className="skill-percent">90%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill va-fill" style={{ width: '90%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">📈 Affiliate Marketing</span>
+                  <span className="skill-percent">85%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill affiliate-fill" style={{ width: '85%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">💬 Customer Support</span>
+                  <span className="skill-percent">90%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill support-fill" style={{ width: '90%' }}></div>
+                </div>
+              </div>
+
+              <div className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">📧 Email Management</span>
+                  <span className="skill-percent">85%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill email-fill" style={{ width: '85%' }}></div>
                 </div>
               </div>
             </div>
@@ -316,6 +392,20 @@ const App = () => {
           <h2 className="section-title">Professional Experience</h2>
           <div className="experiences-grid">
             
+            {/* TikTok Affiliate Experience */}
+            <div className="experience-card">
+              <div className="experience-icon">📱</div>
+              <h3>TikTok Affiliate Creator</h3>
+              <div className="experience-company">1.5 Years Experience</div>
+              <p>Created engaging content that drove real sales. Learned what makes content go viral, how to build trust with audiences, and how to convert views into revenue through affiliate marketing.</p>
+              <div className="experience-tags">
+                <span>Content Creation</span>
+                <span>Trend Research</span>
+                <span>Audience Growth</span>
+                <span>Sales Conversion</span>
+              </div>
+            </div>
+
             <div className="experience-card">
               <div className="experience-icon">💼</div>
               <h3>Customer Service Representative</h3>
@@ -393,11 +483,11 @@ const App = () => {
           <div className="contact-content">
             <div className="contact-info">
               <h3>Let's work together</h3>
-              <p>Have a project in mind? I'd love to hear about it. Whether it's a startup, a personal project, or just a chat — reach out!</p>
+              <p>Have a project in mind? I'd love to hear about it. Whether it's web development, content creation, virtual assistance, or just a chat — reach out!</p>
               <div className="contact-details">
                 <p>📧 salburoarchie2005@gmail.com</p>
                 <p>📱 +63963-171-9447</p>
-                <p>🌍Panubtuban, Dauin, Negros Oriental, Philippines</p>
+                <p>🌍 Panubtuban, Dauin, Negros Oriental, Philippines</p>
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
