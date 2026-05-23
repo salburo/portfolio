@@ -5,6 +5,7 @@ import './App.css';
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
   
   // Data states
   const [projects, setProjects] = useState([]);
@@ -92,6 +93,13 @@ const App = () => {
     };
   }, []);
 
+  // Close menu when clicking a link
+  const handleNavClick = (id) => {
+    setActiveSection(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false); // Close menu on mobile
+  };
+
   const scrollTo = (id) => {
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -154,16 +162,26 @@ const App = () => {
           <div className="logo" onClick={() => scrollTo('home')}>
             &lt;Archie /&gt;
           </div>
-          <div className="nav-links">
-            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>Home</a>
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
-            <a href="#experiences" className={activeSection === 'experiences' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('experiences'); }}>Experience</a>
-            <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('projects'); }}>Projects</a>
-            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>Contact</a>
+          
+          {/* Hamburger Menu Button - visible on mobile */}
+          <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          
+          {/* Navigation Links - becomes dropdown on mobile */}
+          <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Home</a>
+            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>About</a>
+            <a href="#experiences" className={activeSection === 'experiences' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('experiences'); }}>Experience</a>
+            <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>Projects</a>
+            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>Contact</a>
           </div>
         </div>
       </nav>
 
+      {/* Rest of your component remains exactly the same */}
       <section id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
@@ -195,7 +213,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* ========== ABOUT SECTION WITH INSPIRING STORY ========== */}
       <section id="about" className="reveal-on-scroll">
         <div className="container">
           <h2 className="section-title">My Journey</h2>
@@ -212,11 +229,9 @@ const App = () => {
               <p>🌟 <strong>To anyone reading this who is struggling:</strong> Keep going. Your breakthrough is closer than you think. Let your hunger for success be louder than your fear of failure.</p>
             </div>
             
-            {/* ========== SKILL PROGRESS BARS (MIXED IT + VA SKILLS) ========== */}
             <div className="skills-section stagger-children">
               <h3 className="skills-title">💪 Skills I Built Along The Way</h3>
               
-              {/* Technical Skills - Left Side */}
               <div className="skills-subtitle">💻 Technical Development</div>
               
               <div className="skill-item">
@@ -309,7 +324,6 @@ const App = () => {
                 </div>
               </div>
 
-              {/* VA & Digital Creator Skills - Right Side */}
               <div className="skills-subtitle">📱 Virtual Assistance & Content Creation</div>
 
               <div className="skill-item">
@@ -386,13 +400,11 @@ const App = () => {
         </div>
       </section>
 
-      {/* ========== OTHER EXPERIENCES SECTION ========== */}
       <section id="experiences" className="reveal-on-scroll">
         <div className="container">
           <h2 className="section-title">Professional Experience</h2>
           <div className="experiences-grid">
             
-            {/* TikTok Affiliate Experience */}
             <div className="experience-card">
               <div className="experience-icon">📱</div>
               <h3>TikTok Affiliate Creator</h3>
@@ -436,7 +448,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* ========== PROJECTS SECTION ========== */}
       <section id="projects">
         <div className="container">
           <h2 className="section-title reveal-on-scroll">Featured Projects</h2>
