@@ -486,29 +486,41 @@ section { padding: 100px 0; }
   100% { transform: translateY(0px); }
 }
 
+/* Outer ring */
 .profile-ring {
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #646cff, #a855f7, #ff6b6b, #646cff);
-  background-size: 300% 300%;
+ background: linear-gradient(135deg, #10b981, #14b8a6, #06b6d4, #10b981);
+  background-size: 200% 200%;
   animation: borderFlow 4s ease infinite;
+  z-index: 0;
+  filter: blur(5px);
+  opacity: 0.8;
+}
+
+/* Inner ring */
+.profile-ring::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+ background: linear-gradient(135deg, #10b981, #14b8a6, #06b6d4, #10b981);
+  background-size: 200% 200%;
+  animation: borderFlow 4s ease infinite reverse;
   z-index: 1;
 }
 
 @keyframes borderFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .profile-image-wrapper {
