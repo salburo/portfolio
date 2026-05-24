@@ -5,17 +5,46 @@ import './App.css';
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for saved preference
+    const saved = localStorage.getItem('darkMode');
+    return saved !== null ? JSON.parse(saved) : true;
+  });
   
   // Data states
   const [projects, setProjects] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   
-  // Form state
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  // Enhanced Form state
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '', 
+    service: '', 
+    budget: '', 
+    timeline: '',
+    message: '' 
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem('darkMode', JSON.stringify(!darkMode));
+  };
+
+  // Apply dark mode class to body
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
 
   // Fetch projects from Supabase
   useEffect(() => {
@@ -80,7 +109,7 @@ const App = () => {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.reveal-on-scroll, .project-card, .stagger-children, .skills-section, .experience-card').forEach((el) => {
+    document.querySelectorAll('.reveal-on-scroll, .project-card, .stagger-children, .skills-section, .experience-card, .pricing-card').forEach((el) => {
       observer.observe(el);
     });
 
@@ -93,11 +122,10 @@ const App = () => {
     };
   }, []);
 
-  // Close menu when clicking a link
   const handleNavClick = (id) => {
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false); // Close menu on mobile
+    setMenuOpen(false);
   };
 
   const scrollTo = (id) => {
@@ -115,6 +143,14 @@ const App = () => {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
+    const detailedMessage = `
+      Service Interested: ${formData.service}
+      Budget Range: ${formData.budget}
+      Timeline: ${formData.timeline}
+      -------------------------
+      Message: ${formData.message}
+    `;
+
     try {
       const { data, error } = await supabase
         .from('messages')
@@ -122,7 +158,7 @@ const App = () => {
           {
             name: formData.name,
             email: formData.email,
-            message: formData.message,
+            message: detailedMessage,
           }
         ]);
 
@@ -130,9 +166,9 @@ const App = () => {
 
       setSubmitStatus({ 
         type: 'success', 
-        message: 'Thanks for reaching out! Archie will get back to you soon.' 
+        message: 'Thanks for reaching out! Archie will get back to you within 24 hours.' 
       });
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', service: '', budget: '', timeline: '', message: '' });
       
       setTimeout(() => {
         setSubmitStatus({ type: '', message: '' });
@@ -156,24 +192,28 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? 'dark-theme' : 'light-theme'}`}>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo" onClick={() => scrollTo('home')}>
             &lt;Archie /&gt;
           </div>
           
-          {/* Hamburger Menu Button - visible on mobile */}
+          {/* Dark Mode Toggle Button */}
+          <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+          
           <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
             <span></span>
             <span></span>
             <span></span>
           </div>
           
-          {/* Navigation Links - becomes dropdown on mobile */}
           <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
             <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Home</a>
             <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>About</a>
+            <a href="#pricing" className={activeSection === 'pricing' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('pricing'); }}>Pricing</a>
             <a href="#experiences" className={activeSection === 'experiences' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('experiences'); }}>Experience</a>
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>Projects</a>
             <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>Contact</a>
@@ -181,7 +221,6 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Rest of your component remains exactly the same */}
       <section id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
@@ -190,8 +229,8 @@ const App = () => {
             <h2>IT Graduate | Web Developer | VA & Digital Creator</h2>
             <p>From financial struggles to graduation day — I turned every challenge into fuel for growth. Now I build web experiences, create content, and help brands grow online.</p>
             <div className="hero-buttons">
-              <button className="btn-primary" onClick={() => scrollTo('projects')}>View My Work</button>
-              <button className="btn-secondary" onClick={() => scrollTo('contact')}>Let's Talk</button>
+              <button className="btn-primary" onClick={() => scrollTo('pricing')}>View Pricing</button>
+              <button className="btn-secondary" onClick={() => scrollTo('contact')}>Hire Me →</button>
               <button className="btn-resume" onClick={() => window.open('/resume.html', '_blank')}>
                 📄 Download Resume
               </button>
@@ -209,6 +248,68 @@ const App = () => {
               <span className="status-dot"></span>
               Available for work
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PRICING / PACKAGES SECTION ========== */}
+      <section id="pricing" className="reveal-on-scroll">
+        <div className="container">
+          <h2 className="section-title">📦 Services & Pricing</h2>
+          <p className="pricing-intro">Transparent rates — no hidden fees. Choose the package that fits your needs.</p>
+          
+          <div className="pricing-grid">
+            
+            <div className="pricing-card">
+              <div className="pricing-icon">💼</div>
+              <h3>Virtual Assistant</h3>
+              <div className="pricing-price">$10<span>/hour</span></div>
+              <p className="pricing-description">20 hours/week • Flexible schedule • Reliable support</p>
+              <ul className="pricing-features">
+                <li>✓ Email & Calendar Management</li>
+                <li>✓ Data Entry & Research</li>
+                <li>✓ Customer Support</li>
+                <li>✓ Social Media Assistance</li>
+                <li>✓ 24hr Response Time</li>
+              </ul>
+              <button className="btn-pricing" onClick={() => scrollTo('contact')}>Hire Me →</button>
+            </div>
+
+            <div className="pricing-card popular">
+              <div className="popular-badge">⭐ Most Popular</div>
+              <div className="pricing-icon">📱</div>
+              <h3>Content Creation</h3>
+              <div className="pricing-price">$9 - $150<span>/video</span></div>
+              <p className="pricing-description">TikTok • Reels • Shorts • YouTube</p>
+              <ul className="pricing-features">
+                <li>✓ Trend Research</li>
+                <li>✓ Scriptwriting</li>
+                <li>✓ Filming & Editing</li>
+                <li>✓ Captions & Hashtags</li>
+                <li>✓ Posting & Engagement</li>
+              </ul>
+              <button className="btn-pricing" onClick={() => scrollTo('contact')}>Book Now →</button>
+            </div>
+
+            <div className="pricing-card">
+              <div className="pricing-icon">💻</div>
+              <h3>Web Development</h3>
+              <div className="pricing-price">$99 -$499<span>/project</span></div>
+              <p className="pricing-description">Starting price • Custom quotes available</p>
+              <ul className="pricing-features">
+                <li>✓ Responsive Design</li>
+                <li>✓ Fast Loading</li>
+                <li>✓ SEO Optimized</li>
+                <li>✓ Contact Forms</li>
+                <li>✓ 30 Days Support</li>
+              </ul>
+              <button className="btn-pricing" onClick={() => scrollTo('contact')}>Get Quote →</button>
+            </div>
+
+          </div>
+
+          <div className="pricing-note">
+            <p>📢 Need a custom package? <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>Contact me</a> for a personalized quote based on your specific needs.</p>
           </div>
         </div>
       </section>
@@ -405,6 +506,20 @@ const App = () => {
           <h2 className="section-title">Professional Experience</h2>
           <div className="experiences-grid">
             
+            {/* NEW: Self-Taught Programmer / Developer */}
+            <div className="experience-card">
+              <div className="experience-icon">💻</div>
+              <h3>Self-Taught Programmer & Developer</h3>
+              <div className="experience-company">Continuous Learning Journey</div>
+              <p>Taught myself web development through online resources, documentation, and hands-on projects. Built real-world applications, solved complex problems, and never stopped learning. This self-driven journey taught me resourcefulness, discipline, and the power of consistent effort.</p>
+              <div className="experience-tags">
+                <span>Self-Learning</span>
+                <span>Problem Solving</span>
+                <span>Discipline</span>
+                <span>Consistency</span>
+              </div>
+            </div>
+
             <div className="experience-card">
               <div className="experience-icon">📱</div>
               <h3>TikTok Affiliate Creator</h3>
@@ -488,19 +603,24 @@ const App = () => {
         </div>
       </section>
 
+      {/* ========== ENHANCED CONTACT SECTION ========== */}
       <section id="contact" className="reveal-on-scroll">
         <div className="container">
           <h2 className="section-title">Get In Touch</h2>
           <div className="contact-content">
             <div className="contact-info">
               <h3>Let's work together</h3>
-              <p>Have a project in mind? I'd love to hear about it. Whether it's web development, content creation, virtual assistance, or just a chat — reach out!</p>
+              <p>Have a project in mind? I'd love to hear about it. Fill out the form and I'll get back to you within 24 hours.</p>
               <div className="contact-details">
                 <p>📧 salburoarchie2005@gmail.com</p>
                 <p>📱 +63963-171-9447</p>
                 <p>🌍 Panubtuban, Dauin, Negros Oriental, Philippines</p>
               </div>
+              <div className="response-time">
+                ⚡ Response time: Usually within 1-2 hours
+              </div>
             </div>
+            
             <form className="contact-form" onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -520,9 +640,54 @@ const App = () => {
                 required
                 disabled={isSubmitting}
               />
+              
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+              >
+                <option value="">📋 I'm interested in...</option>
+                <option value="Virtual Assistant">💼 Virtual Assistant</option>
+                <option value="Content Creation">📱 Content Creation</option>
+                <option value="Web Development">💻 Web Development</option>
+                <option value="Social Media Management">📊 Social Media Management</option>
+                <option value="Other">✨ Other Services</option>
+              </select>
+
+              <select
+                name="budget"
+                value={formData.budget}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+              >
+                <option value="">💰 Budget Range</option>
+                <option value="$100 - $300">$100 - $300</option>
+                <option value="$300 - $500">$300 - $500</option>
+                <option value="$500 - $1000">$500 - $1000</option>
+                <option value="$1000+">$1000+</option>
+                <option value="Flexible">Flexible / Discuss</option>
+              </select>
+
+              <select
+                name="timeline"
+                value={formData.timeline}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+              >
+                <option value="">⏰ Timeline</option>
+                <option value="Urgent (Within a week)">Urgent (Within a week)</option>
+                <option value="Within a month">Within a month</option>
+                <option value="1-3 months">1-3 months</option>
+                <option value="Flexible">Flexible / Not urgent</option>
+              </select>
+              
               <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Tell me more about your project or needs..."
                 rows="5"
                 value={formData.message}
                 onChange={handleInputChange}
@@ -537,7 +702,7 @@ const App = () => {
               )}
               
               <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message →'}
+                {isSubmitting ? 'Sending...' : 'Send Inquiry →'}
               </button>
             </form>
           </div>
@@ -551,7 +716,7 @@ const App = () => {
           className="back-to-top"
           aria-label="Back to top"
         >
-          <span>↑</span>
+          <span>▲</span>
         </button>
       )}
 
