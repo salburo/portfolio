@@ -193,21 +193,27 @@ const App = () => {
 
   return (
     <div className={`app ${darkMode ? 'dark-theme' : 'light-theme'}`}>
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+            <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo" onClick={() => scrollTo('home')}>
             &lt;Archie /&gt;
           </div>
           
-          {/* Dark Mode Toggle Button */}
-          <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-            {darkMode ? '☀️' : '🌙'}
-          </button>
-          
-          <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="nav-right">
+            {/* Dark Mode Toggle Button - Revamped */}
+            <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+              <div className="toggle-track">
+                <div className={`toggle-thumb ${darkMode ? 'dark' : 'light'}`}>
+                  <span className="toggle-icon">{darkMode ? '🌙' : '☀️'}</span>
+                </div>
+              </div>
+            </button>
+            
+            <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
           
           <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
