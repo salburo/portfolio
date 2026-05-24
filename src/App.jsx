@@ -507,6 +507,10 @@ const App = () => {
         </div>
       </section>
 
+
+      
+      
+
       <section id="experiences" className="reveal-on-scroll">
         <div className="container">
           <h2 className="section-title">Professional Experience</h2>
@@ -608,6 +612,9 @@ const App = () => {
           )}
         </div>
       </section>
+
+
+ 
 
       {/* ========== ENHANCED CONTACT SECTION ========== */}
       <section id="contact" className="reveal-on-scroll">
@@ -714,6 +721,7 @@ const App = () => {
           </div>
         </div>
       </section>
+      
 
       {/* ========== BACK TO TOP BUTTON ========== */}
       {scrolled && (
